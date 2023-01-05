@@ -1,0 +1,89 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.container{
+    padding-top: 0%;
+    padding-left: 55%;
+    min-height: 100vh;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    padding-bottom: 60px;
+}
+
+.container form{
+    background: #eee;
+    border-radius: 5px;
+    padding: 20px;
+    width: 500px;
+}
+
+.container form .inputBox{
+    margin-top: 20px;
+    margin-bottom: 7px;
+}
+
+.container form .inputBox span{
+    display: block;
+    color: rgb(69, 10, 69);
+    padding-bottom: 5px;
+    font-size: 15px;
+}
+
+.container form .inputBox input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border:1px solid rgb(0, 0, 0, .3);
+    color:#444;
+}
+
+.container form .flexbox{
+    display: flex;
+    gap:15px;
+}
+
+.container form .flexbox .inputBox{
+    flex:1 1 0;
+}
+
+.container form .submitBtn{
+    width: 100%;
+    background: linear-gradient(26.99deg, rgba(69, 26, 78, 0.2) 52.61%, rgba(60, 13, 13, 0.2) 95.07%), linear-gradient(164.67deg, rgba(22, 4, 31, 0.98) 4.47%, #380C4A 15.5%, #3B0E46 19.19%, #3D0F42 23.38%, #441436 30.26%, #33254E 36.4%, #2B2D59 42.79%, #292654 47.99%, #271F4F 52.8%, #240D37 64.72%, #22052D 79.1%);
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 20px;
+    color:#fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s linear;
+}
+
+.container form .submitBtn:hover{
+    letter-spacing: 2px;
+    opacity: .8;
+}
+
+::placeholder{
+    color: lightgray;
+    text-transform: none;
+    font-style: italic;
+}
+
+.warning{
+    text-transform: none;
+    color: red;
+    font-style: italic;
+    font-size: 10px;
+}
+
+input{
+    text-transform: none;
+}
