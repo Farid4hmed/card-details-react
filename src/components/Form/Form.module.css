@@ -9,7 +9,7 @@
 
 .container{
     padding-top: 0%;
-    padding-left: 55%;
+    padding-left: 57%;
     min-height: 100vh;
     background: #eee;
     display: flex;
@@ -50,10 +50,14 @@
     gap:15px;
 }
 
-.container form .flexbox .inputBox{
-    flex:1 1 0;
+
+.container form .flexbox .flexbox2{
+    display:flex;
 }
 
+.container form .flexbox .flexbox2 input{
+    width: 90%;
+}
 .container form .submitBtn{
     width: 100%;
     background: linear-gradient(26.99deg, rgba(69, 26, 78, 0.2) 52.61%, rgba(60, 13, 13, 0.2) 95.07%), linear-gradient(164.67deg, rgba(22, 4, 31, 0.98) 4.47%, #380C4A 15.5%, #3B0E46 19.19%, #3D0F42 23.38%, #441436 30.26%, #33254E 36.4%, #2B2D59 42.79%, #292654 47.99%, #271F4F 52.8%, #240D37 64.72%, #22052D 79.1%);
@@ -64,11 +68,6 @@
     border-radius: 10px;
     cursor: pointer;
     transition: .2s linear;
-}
-
-.container form .submitBtn:hover{
-    letter-spacing: 2px;
-    opacity: .8;
 }
 
 ::placeholder{

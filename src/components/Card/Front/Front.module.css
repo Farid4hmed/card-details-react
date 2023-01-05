@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+.cardContainer{
+    margin-bottom: -150px;
+    position: relative;
+    height: 250px;
+    width: 400px;
+}
+
+.cardContainer .front{
+    margin-top: 32%;
+    margin-left: 50%;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0; left: 0;
+    background: rgb(133,112,42);
+    background: linear-gradient(80deg, rgba(133,112,42,1) 0%, rgba(133,40,133,1) 51%, rgba(82,9,226,1) 100%, rgba(66,0,255,1) 100%);
+    border-radius: 5px;
+    backface-visibility: hidden;
+    box-shadow: 0 15px 25px rgba(0,0,0,.2);
+    padding:20px;
+    transform:perspective(1000px) rotateY(0deg);
+    transition:transform .4s ease-out;
+}
+
+
+.cardContainer .front .cardNumberBox{
+    padding:30px 0;
+    font-size: 22px;
+    color:#fff;
+}
+
+.cardContainer .front .cardHolderName p{
+    text-transform: none;
+    margin-top: 3%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cardContainer .front .flexbox{
+    display: flex;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.cardContainer .front .flexbox .box:nth-child(1){
+    margin-right: auto;
+}
+
+.cardContainer .front .flexbox .box{
+    margin-top: 5%;
+    font-size: 15px;
+    color:#fff;
+}

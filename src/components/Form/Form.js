@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-
 import styles from "./Form.module.css";
 
-export default function Form(){
+export default function Form(props){
     const [fullName, setFullName] = useState();
     const [cardNo, setCardNo] = useState();
     const [cvv, setCvv] = useState();
@@ -47,6 +46,10 @@ export default function Form(){
                 if(cardNo.charCodeAt(i)!==32 && cardNo.charCodeAt(i) < 48 || cardNo.charCodeAt(i) > 57)setCardNoErr(true);
             }
             if(countNums != 16)setCardNoErr(true);
+            if(!cardNoErr && cardNo.charCodeAt(4)!==32 || cardNo.charCodeAt(9)!==32 || cardNo.charCodeAt(14)!==32){
+                setCardNoErr(true);
+            }
+
         }
 
         //Expire Month Format Error
@@ -69,6 +72,19 @@ export default function Form(){
             }
         }
 
+        if(err===false && fullNameErr===false && cardNoErr===false && expMonthErr===false && expYearErr===false && cvvErr==false){
+            // console.log(err);
+            // console.log(fullNameErr);
+            // console.log(cardNoErr);
+            // console.log(expMonthErr);
+            // console.log(expYearErr);
+            // console.log(cvvErr);
+            props.setName(fullName);
+            props.setNum(cardNo);
+            props.setMonth(expireMonth);
+            props.setYear(expireYear);
+            props.setCVV(cvv);
+        }
     }
     return (
         <div className={styles.container}>
@@ -86,26 +102,28 @@ export default function Form(){
             {cardNoErr? <label className={styles.warning}>Invalid Card Number!</label>: ""}
         </div>
         <div className={styles.flexbox}>
+            <div className={styles.flexbox2}>
             <div className={styles.inputBox}>
-                <span>expiration mm</span>
+                <span>expire mm</span>
                 <input type="text" maxLength={2} onChange={x=>{setExpireMonth(x.target.value); setExpMonthErr(false)}} placeholder="MM"/>
                 {err&&!expireMonth? <label className={styles.warning}>Expiration month required.</label>: ""}
                 {expMonthErr? <label className={styles.warning}>Wrong Format!</label>:""}
             </div>
             <div className={styles.inputBox}>
-                <span>expiration yy</span>
+                <span>expire yy</span>
                 <input type="text" maxLength={2} onChange={x=>{setExpireYear(x.target.value); setExpYearErr(false)}} placeholder="YY"/>
                 {err&&!expireYear? <label className={styles.warning}>Expiration year required.</label>: ""}
-                {expYearErr? <label className={styles.warning}>Wrong Format!</label>:""}
+                {expYearErr? <label className={styles.warning}>Invalid Format!</label>:""}
+            </div>
             </div>
             <div className={styles.inputBox}>
                 <span>cvv</span>
                 <input type="text" maxLength={3} onChange={x=>{setCvv(x.target.value); setCvvErr(false)}} placeholder="e.g. 123"/>
                 {err&&!cvv? <label className={styles.warning}>CVV required.</label>: ""}
-                {cvvErr? <label className={styles.warning}>Wrong Format!</label>:""}
+                {cvvErr? <label className={styles.warning}>Invalid Format!</label>:""}
             </div>
         </div>
-        <input type="submit" value="confirm" className={styles.submitBtn} />
+        <input type="submit" value="Confirm" className={styles.submitBtn} />
     </form>
        </div>
     );
