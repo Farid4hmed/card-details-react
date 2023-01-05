@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Form.module.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Form(props){
     const [fullName, setFullName] = useState();
@@ -16,6 +18,7 @@ export default function Form(props){
 
     function handleSubmit(e){
         e.preventDefault();
+
         //Empty Field Error
         if(!fullName || !cardNo || !cvv || !expireMonth || !expireYear){
             setErr(true);
@@ -54,12 +57,14 @@ export default function Form(props){
 
         //Expire Month Format Error
         if(expireMonth){
+            if(expireMonth.length !== 2)setExpMonthErr(true);
             for(var i=0; i<expireMonth.length; i++)
             if(expireMonth.charCodeAt(i) < 48 || expireMonth.charCodeAt(i) > 57)setExpMonthErr(true);
         }
 
         //Expire Year Format Error
         if(expireYear){
+            if(expireYear.length !== 2)setExpYearErr(true);
             for(var i=0; i<expireYear.length; i++){
                 if(expireYear.charCodeAt(i) < 48 || expireYear.charCodeAt(i) > 57)setExpYearErr(true);
             }
@@ -67,25 +72,33 @@ export default function Form(props){
 
         //Cvv Format Error
         if(cvv){
+            if(cvv.length !== 3)setCvvErr(true);
             for(var i=0; i<cvv.length; i++){
                 if(cvv.charCodeAt(i) < 48 || cvv.charCodeAt(i) > 57)setCvvErr(true);
             }
         }
-
-        if(err===false && fullNameErr===false && cardNoErr===false && expMonthErr===false && expYearErr===false && cvvErr==false){
-            // console.log(err);
-            // console.log(fullNameErr);
-            // console.log(cardNoErr);
-            // console.log(expMonthErr);
-            // console.log(expYearErr);
-            // console.log(cvvErr);
+        if(!err && !fullNameErr && !cardNoErr && !expMonthErr && !expYearErr &&!cvvErr){
             props.setName(fullName);
             props.setNum(cardNo);
             props.setMonth(expireMonth);
             props.setYear(expireYear);
             props.setCVV(cvv);
+
+            
+            toast.success("Success!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         }
     }
+
+
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit}>
@@ -125,7 +138,20 @@ export default function Form(props){
         </div>
         <input type="submit" value="Confirm" className={styles.submitBtn} />
     </form>
+    <ToastContainer
+    position="top-center"
+    autoClose={5000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="light"/>
        </div>
+       
+
     );
 };
 
